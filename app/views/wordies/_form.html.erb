@@ -1,0 +1,17 @@
+<%= form_for(@wordy) do |f| %>
+  <% if @wordy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wordy.errors.count, "error") %> prohibited this wordy from being saved:</h2>
+
+      <ul>
+      <% @wordy.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

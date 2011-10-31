@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  word: MyString
+  type: 
+  time: MyString
+  meaning: MyString
+
+two:
+  word: MyString
+  type: 
+  time: MyString
+  meaning: MyString

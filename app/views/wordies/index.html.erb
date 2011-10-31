@@ -1,0 +1,21 @@
+<h1>Listing wordies</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @wordies.each do |wordy| %>
+  <tr>
+    <td><%= link_to 'Show', wordy %></td>
+    <td><%= link_to 'Edit', edit_wordy_path(wordy) %></td>
+    <td><%= link_to 'Destroy', wordy, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Wordy', new_wordy_path %>

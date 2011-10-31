@@ -1,0 +1,21 @@
+<h1>Welcome Back <%= current_user.email %> </h1>
+
+<p> You have adopted <%= current_user.adoptions.length %> words. </p>
+<% if current_user.adoptions.length != 0 %>
+<p> The Words you have adopted are
+<% current_user.adoptions.each do |w| %>
+  <%= Word.find_by_id(w[:word_id]).word%> ,
+  <% end %>
+  <% end %>
+</p>
+
+<table>
+    <% current_user.adoptions.each do |w| %>
+   <tr>
+      <td><%= Word.find_by_id(w[:word_id]).word%></td>
+      <td><%= Word.find_by_id(w[:word_id]).meaning %></td>
+   </tr>
+   <% end %>
+</table>
+
+<%= link_to "Adopt A Word", words_path%>

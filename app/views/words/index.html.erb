@@ -1,0 +1,58 @@
+
+<div id="words_container">
+<div id="checkbox">
+  <%= form_tag words_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    </br>
+    <%= submit_tag "Search", :word => nil %>
+
+  </p>
+<% end %>
+   <table>
+     <tr> <td><%= check_box_tag 'category_id[mean, funny, science]',@words %> mean</td></tr>
+   <tr> <td>
+  <%= check_box_tag 'category_id[mean, funny, science]',@words %>
+   funny</td></tr>
+     <tr> <td>
+  <%= check_box_tag 'category_id[mean, funny, science]',@words %>
+   science</td></tr>
+     <tr><td>
+  <%= check_box_tag 'category_id[mean, funny, science]',@words %>
+   general</td></tr>
+   </table>
+</div>
+<div id="words">
+<table >
+  <tr>
+    <th>WORD</th>
+    <th>TYPE</th>
+    <th>MEANING</th>
+  </tr>
+<% @words.each do |wordy| %>
+  <tr class="<%= cycle('oddrow','evenrow') %>">
+    <td><%= wordy.word %></td>
+    <td><%= wordy.word_type %></td>
+    <td><%= wordy.meaning %></td>
+    <td><%= link_to 'Adopt Word', adoptions_path(:id => wordy), :method => :post %></td>
+    <td> <% if user_signed_in? %>
+         <%= link_to 'Show', wordy%>
+     <% else %>
+         <%= link_to "Show",new_user_session_path%>.
+     <% end %></td>
+  </tr>
+<% end %>
+
+</table>
+  <%= will_paginate @words, previous_label: h("<"), next_label: h(">") %>
+  </div>
+<br />
+</div>
+
+
+
+
+
+
+
+

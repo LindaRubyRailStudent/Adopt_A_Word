@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Adopt a Word  | <%= @home %> </title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tags %>
+</head>
+<body id= 'body'>
+<div id ="container">
+   <div id="user_nav">
+     <%= link_to "HOME", home_path %>
+     <%= link_to "ADOPT A WORD", words_path %>
+     <%= link_to "ABOUT", about_path %>
+     <% if user_signed_in? %>
+     Signed in as <%= current_user.email %>. Not you?
+         <%= link_to "SIGN OUT", destroy_user_session_path, :method => :delete %>
+     <% else %>
+         <%= link_to "REGISTER", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path%>.
+     <% end %>
+   </div>
+</div>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+<div class="site_body">
+  <%= yield %>
+</div>
+
+</body>
+</html>

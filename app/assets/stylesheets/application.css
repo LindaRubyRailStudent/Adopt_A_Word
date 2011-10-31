@@ -1,0 +1,324 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+@fontface {
+font-family: "League_Gothic";
+src: url('../fonts/League_Gothic.otf')format('truetype');
+}
+
+@fontface {
+font-family: "BEBAS";
+src: url('../fonts/BEBAS.ttf')format('truetype');
+}
+
+@fontface {
+font-family: "angelina";
+src: url('../fonts/angelina.ttf')format('truetype');
+}
+
+
+.pagination{
+    background: white;
+    cursor: default;
+    height: 22px;
+}
+
+.disable{
+    display: none;
+}
+.current {
+    font-style: normal;
+    font-weight: bold;
+    background: #2e6ab1;
+    color :white;
+    border: 1px solid #2e6ab1;
+}
+
+a {
+    text-decoration: none;
+    color: #105cbc;
+    border: 1px solid #9aafe5;
+}
+
+.page_info {
+    background: #2e6ab1;
+    color: white;
+    padding: 22em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center;
+}
+
+.container {
+  width: 710px;
+}
+
+#body {
+    background-color: #cccccc;
+}
+
+.site_body{
+    padding-left:40px;
+    padding-right: 40px;
+}
+
+#javascript {
+    background-color: #9999ff;
+    height: 300px;
+    width: 100%;
+    -moz-box-shadow: -5px -5px 5px #888;
+    -webkit-box-shadow: -5px -5px 5px #888;
+    box-shadow: -5px -5px 5px #888;
+}
+#left{
+    width: 30%;
+    background-color: #33ccff;
+    border-color:#cc0033;
+    float: left;
+    padding: 10px;
+    height: 150px;
+    top: 20px;
+    position:relative;
+    -moz-box-shadow: -5px -5px 5px #888;
+    -webkit-box-shadow: -5px -5px 5px #888;
+    box-shadow: -5px -5px 5px #888;
+
+}
+#middle{
+    width: 30%;
+     background-color: #ff0033;
+     float: left;
+     padding: 10px;
+     height: 50px;
+     height: 150px;
+     left:10px;
+    position: relative;
+    left: 30px;
+     top: 20px;
+    -moz-box-shadow: -5px -5px 5px #888;
+    -webkit-box-shadow: -5px -5px 5px #888;
+    box-shadow: -5px -5px 5px #888;
+
+}
+#right{
+    width:30%;
+    background-color: #003333;
+    border-color:#cc0033;
+    float: left;
+    padding: 10px;
+    height: 150px;
+    position: relative;
+    left: 60px;
+     top: 20px;
+    -moz-box-shadow: -5px -5px 5px #888;
+    -webkit-box-shadow: -5px -5px 5px #888;
+    box-shadow: -5px -5px 5px #888;
+}
+
+#partial_render{
+    font-family:bebas;
+}
+
+#word_table{
+
+}
+
+#word_table tr{
+    height: 100px;
+}
+
+#gab {
+    vertical-align:baseline;
+    padding-left:50px;
+    color: #333333;
+    float: left;
+}
+#gab p{
+    font-family:angelina;
+    font-size: 10em;
+    font-style: italic;
+
+}
+#word_type{
+    padding-left:20px;
+}
+
+#word_type p{
+    vertical-align:baseline;
+    font-size: 4em;
+    color: #999999;
+}
+#word_meaning p{
+    font-size:4em;
+    padding-left: 80px;
+}
+
+#word_usage p{
+    font-size:2em;
+    font-style:italic;
+}
+
+h1 {
+    color: #ff0066;
+    font-family: bebas;
+}
+
+h2 {
+    color: #333333;
+    font-family: bebas;
+}
+
+#user_nav{
+    background: #cccccc;
+    padding: 3em;
+    color: #ff0066;
+    border-bottom: dashed;
+    font-family: bebas;
+}
+
+#user_nav a{
+    color: #ff0066;
+    font-size: 40px;
+    padding: 10px;
+}
+#checkbox{
+    display:inline;
+    float:left;
+    padding-right:50px;
+}
+#words_container {
+       -moz-box-shadow: -5px -5px 5px #888;
+    -webkit-box-shadow: -5px -5px 5px #888;
+    box-shadow: -5px -5px 5px #888;
+}
+
+#words{
+    width: 70%;
+    float: left;
+    border: solid;
+    border-color:#ff0066;
+    font-family:bebas;
+    font-size: 25px;
+    text-align:left;
+}
+
+#words td{
+    padding: 5px;
+}
+.oddrow {
+   background-color: #cccccc;
+}
+.evenrow {
+    background-color: #ffffff;
+}
+
+header {
+  padding-top: 20px;
+}
+
+header img {
+  padding: 1em;
+  background: #fff;
+}
+
+section {
+  margin-top: 1em;
+  font-size: 120%;
+  padding: 20px;
+  background: #fff;
+}
+
+section h1 {
+  font-size: 200%;
+}
+
+/* Links */
+
+a {
+  color: #09c;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #069;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #069;
+}
+
+/* Navigation */
+
+nav {
+  float: right;
+}
+
+nav {
+  background-color: white;
+  padding: 0 0.7em;
+  white-space: nowrap;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 0;
+}
+
+nav ul li a {
+  padding: 0 5px;
+  font-weight: bold;
+}
+
+nav ul li a:visited {
+  color: #09c;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Sign up button */
+
+a.signup_button {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+  width: 190px;
+  color: #fff;
+  background: #006400;
+  font-size: 150%;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.round {
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 10px;
+  width: 710px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer nav {
+  float: none;
+}
+
+

@@ -1,0 +1,6 @@
+My Words
+<% unless @user == current_user %>
+You do not have permission to access this page
+<% else %>
+<%= render :partial => 'adoptions/words' %>
+<% end %>
