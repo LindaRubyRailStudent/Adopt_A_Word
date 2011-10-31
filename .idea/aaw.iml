@@ -66,12 +66,6 @@
     </requirement>
     <requirement>
       <requirement>
-        <dependency name="therubyracer-heroku" version="0.8.1.pre3" bound="EQUAL" git="false" path="false" doRequire="true" />
-      </requirement>
-      <source from="Gemfile" />
-    </requirement>
-    <requirement>
-      <requirement>
         <dependency name="turn" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="false" />
       </requirement>
       <source from="Gemfile" />
