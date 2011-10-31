@@ -10,6 +10,10 @@ gem 'devise' , '1.4.3'
 gem 'fastercsv'
 gem 'csv-mapper'
 
+group :production do
+  gem 'pg'
+end
+
 
 # Gems used only for assets and not required
 # in production environments by default.
