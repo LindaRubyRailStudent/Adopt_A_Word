@@ -123,6 +123,7 @@ DEPENDENCIES
   coffee-rails (~> 3.1.0.rc)
   csv-mapper
   devise (= 1.4.3)
+  execjs
   fastercsv
   jquery-rails
   pg

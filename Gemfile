@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'devise' , '1.4.3'
 gem 'fastercsv'
 gem 'csv-mapper'
+gem 'execjs'
 
 group :production do
   gem 'pg'
