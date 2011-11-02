@@ -10,6 +10,8 @@ gem 'devise' , '1.4.3'
 gem 'fastercsv'
 gem 'csv-mapper'
 gem 'execjs'
+gem 'therubyracer', :platforms => :ruby
+
 
 group :production do
   gem 'pg'

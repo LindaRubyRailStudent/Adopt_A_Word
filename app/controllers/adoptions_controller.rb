@@ -16,7 +16,7 @@ class AdoptionsController < ApplicationController
   # @adoption = @user.adoptions.build(:word_id => params[:word_id])
     if @adoption.save
       flash[:notice]= "Word Adopted"
-      redirect_to current_user
+      redirect_to usershow_path
   else
     flash[:error]= " Error adopting this word"
     redirect_to root_url

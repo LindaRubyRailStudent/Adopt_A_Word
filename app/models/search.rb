@@ -1,18 +1,24 @@
 class Search < ActiveRecord::Base
+  belongs_to :word
+
   def words
-    @words ||= find_words
+    @words = find_words
   end
 
   def find_words
-    Word.find(:all)
+    Word.find(:all, :conditions => conditions)
   end
 
   def keyword_conditions
-    ["words.word LIKE ?", "%#{keywords}%"] unless keywords.blank?
+    ["words.word LIKE ?", "%#{keywords}%"]unless keywords.blank?
   end
 
+#  def category_conditions
+#    ["words.category = ?", category] unless category.blank?
+#  end
+
   def category_conditions
-    ["words.category = ?", category] unless category.blank?
+    ["words.category LIKE ?", "%#{category}"]
   end
   def conditions
     [conditions_clauses.join(' AND '), *conditions_options]
@@ -28,3 +34,4 @@ class Search < ActiveRecord::Base
   end
 
 end
+

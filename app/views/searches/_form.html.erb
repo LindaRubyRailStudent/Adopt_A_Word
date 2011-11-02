@@ -15,10 +15,10 @@
     <%= f.label :keywords %><br />
     <%= f.text_field :keywords %>
   </div>
-  <div class="field">
-    <%= f.label :category %><br />
-    <%= f.collection_select(:category, Word.all, :id, :category) %>
-  </div>
+
+
+    <%= select(:search, :category, [['Funny', 'funny'], ['Mean', 'mean']]) %>
+
 
   <div class="actions">
     <%= f.submit %>

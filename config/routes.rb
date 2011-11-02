@@ -11,7 +11,12 @@ Aaw::Application.routes.draw do
   match '/user' => "users#show", :as => :user_root
   match '/usershow', :to => 'users#show'
 
-  devise_for :users
+
+  devise_for :users# :controllers => {:sessions => 'custom_devise/sessions'}, :skip => [:sessions] do
+   # get 'signin' => 'custom_devise/sessions#new', :as => :new_user_session
+   # post 'signin' => 'custom_devise/sessions#create', :as => :user_session
+   # get 'signout' => 'custom_devise/sessions#destroy', :as => :destroy_user_session
+ # end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

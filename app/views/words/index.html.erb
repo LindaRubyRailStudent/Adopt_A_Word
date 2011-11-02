@@ -1,26 +1,25 @@
 
 <div id="words_container">
 <div id="checkbox">
+
+  <%= form_tag(@search, :url => searches_path) do |f| %>
+     <div class="field">
+  </div>
+
+  <% end %>
+
   <%= form_tag words_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     </br>
-    <%= submit_tag "Search", :word => nil %>
+    <%= text_field_tag :search2, params[:search2] %>
+  <%= submit_tag "Search", :word => nil %>
+
+<%= select(:person, :city_id, [['Lisbon', 1], ['Madrid', 2],]) %>
 
   </p>
 <% end %>
-   <table>
-     <tr> <td><%= check_box_tag 'category_id[mean, funny, science]',@words %> mean</td></tr>
-   <tr> <td>
-  <%= check_box_tag 'category_id[mean, funny, science]',@words %>
-   funny</td></tr>
-     <tr> <td>
-  <%= check_box_tag 'category_id[mean, funny, science]',@words %>
-   science</td></tr>
-     <tr><td>
-  <%= check_box_tag 'category_id[mean, funny, science]',@words %>
-   general</td></tr>
-   </table>
+
 </div>
 <div id="words">
 <table >
