@@ -3,7 +3,13 @@ class UsersController < ApplicationController
     @user = User.all
   end
   def show
+    debugger
     @user = current_user
+    @last_tweet = current_user.twitter.user_timeline('LindaKeating2').first.text
+    @last_tweet
+
+    @another_tweet = current_user.twitter.home_timeline
+    @another_tweet
   end
 
   def find_user_words

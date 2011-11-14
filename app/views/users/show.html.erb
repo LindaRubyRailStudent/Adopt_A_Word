@@ -1,21 +1,32 @@
-<h1>Welcome Back <%= current_user.email %> </h1>
 
-<p> You have adopted <%= current_user.adoptions.length %> words. </p>
+<div ><p>Welcome Back <%= current_user.email %></p> </div>
+<div class= "user_container">
+
+  <div id="word_box">
 <% if current_user.adoptions.length != 0 %>
-<p> The Words you have adopted are
-<% current_user.adoptions.each do |w| %>
-  <%= Word.find_by_id(w[:word_id]).word%> ,
-  <% end %>
-  <% end %>
-</p>
-
-<table>
+<p> <h2>You have adopted <%= current_user.adoptions.length %> words</h2>
     <% current_user.adoptions.each do |w| %>
-   <tr>
-      <td><%= Word.find_by_id(w[:word_id]).word%></td>
-      <td><%= Word.find_by_id(w[:word_id]).meaning %></td>
-   </tr>
-   <% end %>
-</table>
+    <table><tr><td class ="word_table"><%= Word.find_by_id(w[:word_id]).word.capitalize%> ,</td><td class="meaning"><%= Word.find_by_id(w[:word_id]).meaning %></td></tr></table>
+  <% end %>
+  <% end %>
+    <%= link_to "Adopt Another Word", words_path%>
+</p>
+</div>
 
-<%= link_to "Adopt A Word", words_path%>
+<div id = "tweets">
+  <% if @another_tweet != nil? %>
+      Your adopted words tweets
+<% @another_tweet.each do |w| %>
+<h1><%= w.text %></h1>
+    <%= w.created_at %>
+    <% end %>
+
+      <% else %>
+      When you tweet your adopted word in twitter we will show it here!
+  <%= link_to "Adopt A Word", words_path%>
+      <% end %>
+</div>
+
+</div>
+
+

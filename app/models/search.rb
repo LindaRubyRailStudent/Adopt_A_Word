@@ -1,12 +1,14 @@
 class Search < ActiveRecord::Base
   belongs_to :word
 
-  def words
-    @words = find_words
+  def words(parameters)
+    @words = find_words(parameters)
   end
 
-  def find_words
-    Word.find(:all, :conditions => conditions)
+  def find_words(parameters)
+    #Word.find(:all, :conditions => conditions)
+    Word.find(:all, :conditions => ["word like ?",parameters])
+
   end
 
   def keyword_conditions
@@ -23,6 +25,7 @@ class Search < ActiveRecord::Base
   def conditions
     [conditions_clauses.join(' AND '), *conditions_options]
   end
+
   def conditions_clauses
     conditions_parts.map{ |condition| condition.first}
   end

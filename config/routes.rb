@@ -1,8 +1,21 @@
 Aaw::Application.routes.draw do
+  match '/auth/:provider/callback' => 'authentications#create'
+  resources :authentications
+
+  get "authentications/index"
+  get "authentications/create"
+  get "authentications/destroy"
+
   resources :searches
   get "pages/home"
   get "pages/about"
-  resources :words
+  match "/words/search" => "words#search"
+
+  resources :words do
+    member do
+      get 'search'
+    end
+  end
   resources :adoptions
   resources :pages
 
@@ -12,7 +25,9 @@ Aaw::Application.routes.draw do
   match '/usershow', :to => 'users#show'
 
 
-  devise_for :users# :controllers => {:sessions => 'custom_devise/sessions'}, :skip => [:sessions] do
+  devise_for :users, :controllers => {:registrations => 'registrations'}
+
+  # :controllers => {:sessions => 'custom_devise/sessions'}, :skip => [:sessions] do
    # get 'signin' => 'custom_devise/sessions#new', :as => :new_user_session
    # post 'signin' => 'custom_devise/sessions#create', :as => :user_session
    # get 'signout' => 'custom_devise/sessions#destroy', :as => :destroy_user_session

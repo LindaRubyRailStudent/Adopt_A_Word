@@ -8,16 +8,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body id= 'body'>
+
+
 <div id ="container">
    <div id="user_nav">
      <%= link_to "HOME", home_path %>
      <%= link_to "ADOPT A WORD", words_path %>
      <%= link_to "ABOUT", about_path %>
      <% if user_signed_in? %>
+         <%= link_to "MY PROFILE", usershow_path %>
      Signed in as <%= current_user.email %>. Not you?
          <%= link_to "SIGN OUT", destroy_user_session_path, :method => :delete %>
      <% else %>
-         <%= link_to "REGISTER", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path%>.
+        <!-- <%= link_to "REGISTER", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path%>.-->
+     <div id ="auth">
+         <%= render :partial => 'devise/sessions/new'%>
+       </div>
+     <div id="auth2">
+         <%= render :partial => 'authentications/index', :locals => {:authentications => @authentications} %>
+     </div>
      <% end %>
    </div>
 </div>

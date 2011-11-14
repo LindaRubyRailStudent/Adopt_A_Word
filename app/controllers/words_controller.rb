@@ -20,6 +20,21 @@ class WordsController < ApplicationController
     @adoption = Adoption.new
     @adoption.adopt_a_word(word)
   end
+
+  def search
+    @search = Search.new(params[:search])
+
+    respond_to do |format|
+      if @search.save
+        format.html { redirect_to @search, notice: 'Search was successfully created.' }
+        format.json { render json: @search, status: :created, location: @search }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @search.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
 end
 
 

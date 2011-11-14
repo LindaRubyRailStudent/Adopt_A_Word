@@ -37,6 +37,14 @@ src: url('../fonts/angelina.ttf')format('truetype');
     color :white;
     border: 1px solid #2e6ab1;
 }
+.user_container{
+    width: 100%;
+    background-color: #f2eded;
+     -moz-box-shadow: -5px -5px 5px #e2dada;
+    -webkit-box-shadow: -5px -5px 5px #e2dada;
+    box-shadow: -5px -5px 5px #e2dada;
+    height: 300px;
+}
 
 a {
     text-decoration: none;
@@ -58,7 +66,9 @@ a {
 }
 
 #body {
-    background-color: #cccccc;
+    background: -moz-linear-gradient(0,  #fff,  #000);
+    background: -webkit-gradient(linear, 0, 200, from(#fff), to(#000));
+
 }
 
 .site_body{
@@ -139,9 +149,18 @@ a {
 }
 #gab p{
     font-family:angelina;
-    font-size: 10em;
+    font-size: 7em;
     font-style: italic;
+}
 
+#user_word{
+    color :#333333;
+}
+
+#user_word p {
+    font-family:angelina;
+    font-size:5em;
+    font-style: italic;
 }
 #word_type{
     padding-left:20px;
@@ -178,6 +197,9 @@ h2 {
     color: #ff0066;
     border-bottom: dashed;
     font-family: bebas;
+    display :inline-block;
+    width: 100%;
+
 }
 
 #user_nav a{
@@ -185,15 +207,44 @@ h2 {
     font-size: 40px;
     padding: 10px;
 }
+
+#auth {
+    font-size:10px;
+    position: relative;
+    left: 500px;
+    top: -50px;
+    font-family:arial;
+}
+
+#auth a{
+    font-size:10px;
+    font-family:arial;
+}
+
+#auth2 {
+    position:relative;
+    left: 1050px;
+    top: -120px;
+}
+
+#auth2 a {
+    background:none;
+    border: none;
+    text-decoration: none;
+    padding: 0px;
+}
 #checkbox{
     display:inline;
     float:left;
     padding-right:50px;
 }
 #words_container {
-       -moz-box-shadow: -5px -5px 5px #888;
-    -webkit-box-shadow: -5px -5px 5px #888;
-    box-shadow: -5px -5px 5px #888;
+    height: 500px;
+    background-color: #f2eded;
+    padding: 10px;
+    -moz-box-shadow: -5px -5px 5px #e2dada;
+    -webkit-box-shadow: -5px -5px 5px #e2dada;
+    box-shadow: -5px -5px 5px #e2dada;
 }
 
 #words{
@@ -208,6 +259,33 @@ h2 {
 
 #words td{
     padding: 5px;
+}
+
+.word_table {
+    font-family: angelina;
+    font-size: 45px;
+    font-style: italic;
+    padding: 15px;
+}
+
+
+#tweets {
+    float:left;
+    width: 45%;
+    padding: 2%;
+
+}
+
+#word_box {
+       float:left;
+       width: 45%;
+    padding: 2%;
+}
+
+.meaning {
+    font-family:bebas;
+    font-size: 25px;
+    color: #999999;
 }
 .oddrow {
    background-color: #cccccc;
