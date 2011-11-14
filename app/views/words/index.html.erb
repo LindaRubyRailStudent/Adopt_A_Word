@@ -5,7 +5,7 @@
 <div id="checkbox">
 
   <%= form_tag(@search, :url => searches_path) do |f| %>
-     <div class="field">
+  <div class="field">
   </div>
 
   <% end %>
@@ -15,7 +15,7 @@
     <%= text_field_tag :search, params[:search] %>
     </br>
     <%= text_field_tag :search2, params[:search2] %>
-  <%= submit_tag "Search", :word => nil %>
+  <%= submit_tag "Search", :word => nil %> </br>
 
 <%= select(:person, :city_id, [['Lisbon', 1], ['Madrid', 2],]) %>
 
