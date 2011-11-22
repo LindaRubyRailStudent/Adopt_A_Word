@@ -1,7 +1,12 @@
+<div class="user_container">
+  <div class='word_box'>
+  <table class="word_show">
+    <tr> <td class='gab'><%= @word.word.capitalize %></td><td id="word_type">(<%= @word.word_type %>)</td></tr>
+    <tr><td></td><td id="word_meaning">--<%= @word.meaning.capitalize%>--</td></tr>
+    <tr><td></td><td id="word_usage">"<%= @word.usage %>"</td></tr>
 
-<div id="gab"><p><%= @word.word.capitalize %></p> </div>
-<div id="word_type"><p>(<%= @word.word_type %>)--</p></div>
-<div id="word_meaning"><p><%= @word.meaning.capitalize%></p></div>
-<div id="word_usage"><p>"<%= @word.usage %>"</p></div>
 
- <td><%= link_to 'Adopt Word', adoptions_path(:id => @word), :method => :post %></td>
+    <tr><td ></td><td class="adopt_button"><%= link_to 'Adopt This Word', adoptions_path(:id => @word), :method => :post %></td></tr>
+  </table>
+  </div>
+</div>

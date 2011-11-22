@@ -1,6 +1,6 @@
 My Words
-<% unless @user == current_user %>
-You do not have permission to access this page
+<% if @user == current_user %>
+ <%= render :partial => 'adoptions/words' %>
 <% else %>
-<%= render :partial => 'adoptions/words' %>
+ You do not have permission to access this page
 <% end %>

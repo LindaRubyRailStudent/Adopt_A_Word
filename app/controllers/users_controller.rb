@@ -2,13 +2,19 @@ class UsersController < ApplicationController
   def index
     @user = User.all
   end
-  def show
-    debugger
-    @user = current_user
-    @last_tweet = current_user.twitter.user_timeline('LindaKeating2').first.text
-    @last_tweet
 
-    @another_tweet = current_user.twitter.home_timeline
+  def show
+#    if(params[:id] != nil)
+#      @user = User.find(params[:id])
+#    else
+      @user = current_user
+#    end
+    #@user = params[:id].nil? ? User.find(params[:id]) : current_user
+   #@user = current_user
+    screenname = @user.authentications
+    screenname.each do |n|
+    @another_tweet = @user.twitter.user_timeline(n.screenname)
+    end
     @another_tweet
   end
 

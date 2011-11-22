@@ -4,7 +4,6 @@ class AuthenticationsController < ApplicationController
   end
 
   def create
-    debugger
     omniauth = request.env["omniauth.auth"]
     ## first fetch the authentication find by provider
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
@@ -53,7 +52,7 @@ class AuthenticationsController < ApplicationController
   def handle_unverified_request
     true
   end
-  end
+end
 
 
 

@@ -1,0 +1,5 @@
+404315507-iOFLGPnKjRMwMRRIwODfHAc87WTFIo7HLY9EVZbr = token
+4Vkly1RTFYEkzumQfu5Ml4u5D9U113SHOnaMcYBuqU = secret
+
+OAuth::Consumer:0x732eb68 @key="oK9Qv5IPAe1qiR9bkKxZbw" @secret="RNxEtuFbTG9wwXClGDMSw42qMnKeAZUEvoRfYMqw"
+

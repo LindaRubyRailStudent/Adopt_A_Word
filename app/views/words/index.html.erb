@@ -1,4 +1,4 @@
-<!--<%= render :partial => "/searches/form"%>  -->
+<!--<%= render :partial => "/searches/form"%>-->
 
 
 <div id="words_container">
@@ -11,14 +11,13 @@
   <% end %>
 
   <%= form_tag words_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    </br>
-    <%= text_field_tag :search2, params[:search2] %>
-  <%= submit_tag "Search", :word => nil %> </br>
-
-<%= select(:person, :city_id, [['Lisbon', 1], ['Madrid', 2],]) %>
-
+<table>
+   <tr><td>Search Word</td><td><%= text_field_tag :search, params[:search] %></td></tr>
+  <tr><td>Type</td><td><%= select(:search3, :type, [['All',''],['Adjective', 'adj'], ['Noun', 'noun'],['Verb', 'verb']],{ "style" => "width:200px" }) %></td></tr>
+  <tr><td>Category</td><td><%= select(:search2, :category, [['All',''],['Kind', 'kind'], ['Mean', 'mean'],['Medical', 'medical'],['General','general'],['Science','science'],['Funny','funny']]) %></td></tr>
+   <tr><td></td><td><%= submit_tag "Search", :word => nil, :width => 200 %></td></tr>
+  <tr><td></td><td><%= link_to "Search All Words", words_path %></td></tr>
+</table>
   </p>
 <% end %>
 
@@ -32,12 +31,12 @@
   </tr>
 <% @words.each do |wordy| %>
   <tr class="<%= cycle('oddrow','evenrow') %>">
-    <td><%= wordy.word %></td>
+    <td ><b><%= wordy.word.capitalize %></b></td>
     <td><%= wordy.word_type %></td>
     <td><%= wordy.meaning %></td>
     <td><%= link_to 'Adopt Word', adoptions_path(:id => wordy), :method => :post %></td>
     <td> <% if user_signed_in? %>
-         <%= link_to 'Show', wordy%>
+         <%= link_to 'View This Word', wordy%>
      <% else %>
          <%= link_to "Show",new_user_session_path%>.
      <% end %></td>

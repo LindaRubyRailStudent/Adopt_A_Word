@@ -6,7 +6,8 @@ class WordsController < ApplicationController
   #end
 
  def index
-  @words = Word.search(params[:search]).paginate(:per_page => 10,:page => params[:page])
+   debugger
+  @words = Word.search(params[:search], params[:search2], params[:search3]).paginate(:per_page => 15,:page => params[:page])
    # @search = Word.search(params[:search])
    # @words = @search.paginate(:page => params[:page])
   end
@@ -22,7 +23,7 @@ class WordsController < ApplicationController
   end
 
   def search
-    @search = Search.new(params[:search])
+    @search = Search.new(params[:search], params[:search2],params[:search3])
 
     respond_to do |format|
       if @search.save

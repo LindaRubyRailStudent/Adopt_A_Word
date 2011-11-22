@@ -14,7 +14,8 @@ gem 'therubyracer', :platforms => :ruby
 #gem "omniauth", ">= 0.3.0.rc1", :git => "git://github.com/intridea/omniauth.git", :branch => "0-3-stable"
 gem "omniauth", '< 1.0.0'
 gem 'twitter'
-#gem 'ruby-debug19'
+gem 'ruby-debug19'
+gem 'fb_graph'
 
 
 group :production do

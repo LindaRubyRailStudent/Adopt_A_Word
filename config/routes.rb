@@ -1,4 +1,6 @@
 Aaw::Application.routes.draw do
+
+  resources :posts
   match '/auth/:provider/callback' => 'authentications#create'
   resources :authentications
 
@@ -24,8 +26,8 @@ Aaw::Application.routes.draw do
   match '/user' => "users#show", :as => :user_root
   match '/usershow', :to => 'users#show'
 
-
   devise_for :users, :controllers => {:registrations => 'registrations'}
+  resources :users, :only => [:index, :show]
 
   # :controllers => {:sessions => 'custom_devise/sessions'}, :skip => [:sessions] do
    # get 'signin' => 'custom_devise/sessions#new', :as => :new_user_session

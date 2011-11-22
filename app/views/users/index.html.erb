@@ -8,6 +8,12 @@
    <tr>
       <td><%= user.id %></td>
       <td><%= user.email %></td>
+     <td>This user has adopted <%= user.words.count %> words </td>
+     <td> <%= link_to "MY PROFILE", user_path(user) %> </td>
+     <td> <%= link_to 'user x', usershow_path%></td>
+     <!--<% user.words.each do |w| %>-->
+     <!--<td> <%= w[:word]%></td>-->
+     <!--<% end %>-->
    </tr>
 <% end %>
 </table>

@@ -2,28 +2,34 @@
 <div ><p>Welcome Back <%= current_user.email %></p> </div>
 <div class= "user_container">
 
-  <div id="word_box">
-<% if current_user.adoptions.length != 0 %>
-<p> <h2>You have adopted <%= current_user.adoptions.length %> words</h2>
-    <% current_user.adoptions.each do |w| %>
-    <table><tr><td class ="word_table"><%= Word.find_by_id(w[:word_id]).word.capitalize%> ,</td><td class="meaning"><%= Word.find_by_id(w[:word_id]).meaning %></td></tr></table>
-  <% end %>
-  <% end %>
-    <%= link_to "Adopt Another Word", words_path%>
-</p>
-</div>
+  <div class="word_box">
+<% if @user.adoptions.length != 0 %>
+<p> <h2>You have adopted <%= @user.adoptions.length %> words</h2>
 
-<div id = "tweets">
+    <% @user.adoptions.each do |w| %>
+    <table class ="word_table"><tr><td class = 'gab'><%= Word.find_by_id(w[:word_id]).word.capitalize%></td></tr>
+     <tr> <td><%= Word.find_by_id(w[:word_id]).meaning %></td></tr>
+    </table>
+  <% end %>
+
+  <% end %>
+
+ <%= render :partial => "/posts/form"%>
+</div>
+<div class = "tweets">
+  <%= @search %>
   <% if @another_tweet != nil? %>
       Your adopted words tweets
 <% @another_tweet.each do |w| %>
-<h1><%= w.text %></h1>
-    <%= w.created_at %>
+          <table class="word_table"><tr><td><%= image_tag('twitter-logo.jpg', :size => "64x64", :alt => "Twitter Logo")%></td><td class="gab"><%= w.text %></td></tr>
+            <tr><td><%= w.screen_name %></td><td> <%= w.created_at %></td></tr>
+          </table>
     <% end %>
+         <p class="adopt_button"><%= link_to "Adopt Another Word", words_path%></p>
 
       <% else %>
       When you tweet your adopted word in twitter we will show it here!
-  <%= link_to "Adopt A Word", words_path%>
+  <p class="adopt_button"><%= link_to "Adopt A Word", words_path%> </p>
       <% end %>
 </div>
 

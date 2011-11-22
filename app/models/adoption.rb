@@ -1,6 +1,6 @@
 class Adoption < ActiveRecord::Base
 belongs_to :user
-has_many :words
+belongs_to :word
 
   def adopt_a_word(word)
     @words << word

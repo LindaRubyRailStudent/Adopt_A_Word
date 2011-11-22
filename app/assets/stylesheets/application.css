@@ -43,7 +43,7 @@ src: url('../fonts/angelina.ttf')format('truetype');
      -moz-box-shadow: -5px -5px 5px #e2dada;
     -webkit-box-shadow: -5px -5px 5px #e2dada;
     box-shadow: -5px -5px 5px #e2dada;
-    height: 300px;
+    height: 500px;
 }
 
 a {
@@ -63,12 +63,11 @@ a {
 
 .container {
   width: 710px;
+  height:100%;
 }
 
 #body {
-    background: -moz-linear-gradient(0,  #fff,  #000);
-    background: -webkit-gradient(linear, 0, 200, from(#fff), to(#000));
-
+    height: 100%;
 }
 
 .site_body{
@@ -134,24 +133,32 @@ a {
 }
 
 #word_table{
-
+    padding: 10px;
 }
 
 #word_table tr{
-    height: 100px;
+    height: 200px;
 }
 
-#gab {
-    vertical-align:baseline;
-    padding-left:50px;
+.word_show {
+    position:relative;
+    top:10%;
+}
+
+.word_show tr {
+    height:5em;
+}
+
+
+.gab {
     color: #333333;
     float: left;
-}
-#gab p{
     font-family:angelina;
-    font-size: 7em;
+    font-size: 40px;
     font-style: italic;
+    line-height: 60px;
 }
+
 
 #user_word{
     color :#333333;
@@ -162,23 +169,27 @@ a {
     font-size:5em;
     font-style: italic;
 }
-#word_type{
-    padding-left:20px;
-}
 
-#word_type p{
-    vertical-align:baseline;
-    font-size: 4em;
+#word_type {
+    font-size: 2em;
     color: #999999;
 }
-#word_meaning p{
-    font-size:4em;
-    padding-left: 80px;
+#word_meaning {
+    font-size:2em;
+    line-height:60px;
 }
 
-#word_usage p{
-    font-size:2em;
+#word_usage {
+    font-size:1em;
     font-style:italic;
+    line-height:200%;
+    padding-right: 3%;
+}
+
+.adopt_button{
+    color: #ff0066;
+    font-family: bebas;
+    font-size: 40px;
 }
 
 h1 {
@@ -192,10 +203,9 @@ h2 {
 }
 
 #user_nav{
-    background: #cccccc;
+    background: #f2eded;
     padding: 3em;
     color: #ff0066;
-    border-bottom: dashed;
     font-family: bebas;
     display :inline-block;
     width: 100%;
@@ -239,7 +249,7 @@ h2 {
     padding-right:50px;
 }
 #words_container {
-    height: 500px;
+    height: 700px;
     background-color: #f2eded;
     padding: 10px;
     -moz-box-shadow: -5px -5px 5px #e2dada;
@@ -248,38 +258,59 @@ h2 {
 }
 
 #words{
-    width: 70%;
+    position:relative;
+    top: 10px;
     float: left;
     border: solid;
-    border-color:#ff0066;
-    font-family:bebas;
-    font-size: 25px;
+    border-color:#e8e3ff;
+    border-width:20px;
+    font-family: bebas;
+    font-size: 20px;
     text-align:left;
+    background-color: #e8e3ff;
+    -moz-box-shadow: 1px 1px 10px 5px  #e2dada;
+    -webkit-box-shadow: 1px 1px 10px 5px #e2dada;
+    box-shadow: 1px 1px 10px 5px #e2dada;
 }
 
 #words td{
-    padding: 5px;
+    padding: 8px;
+    font-size:12px;
 }
 
 .word_table {
-    font-family: angelina;
     font-size: 45px;
     font-style: italic;
-    padding: 15px;
+    padding: 5px;
+
+}
+
+.word_table tr {
+}
+
+.word_table td {
+     font-family: angelina;
+     line-height: 110%;
+    padding:5px;
 }
 
 
-#tweets {
+.tweets {
     float:left;
     width: 45%;
     padding: 2%;
+    height:100%;
 
 }
 
-#word_box {
+.word_box {
        float:left;
-       width: 45%;
-    padding: 2%;
+       width: 25%;
+        padding: 2%;
+        height:100%;
+    -moz-box-shadow: 1px 1px 10px 5px  #e2dada;
+    -webkit-box-shadow: 1px 1px 10px 5px #e2dada;
+    box-shadow: 1px 1px 10px 5px #e2dada;
 }
 
 .meaning {
@@ -288,7 +319,7 @@ h2 {
     color: #999999;
 }
 .oddrow {
-   background-color: #cccccc;
+   background-color: #e8e3ff;
 }
 .evenrow {
     background-color: #ffffff;
@@ -397,6 +428,13 @@ footer {
 
 footer nav {
   float: none;
+}
+
+#search3_type{
+    width:155px;
+}
+#search2_category{
+    width:155px;
 }
 
 
