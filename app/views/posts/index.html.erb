@@ -1,2 +1,9 @@
 <h1>Posts#index</h1>
 <p>Find me in app/views/posts/index.html.erb</p>
+<% @posts.each do |p| %>
+    <%= p.title %>
+    <%= p.content %>
+    <% end %>
+
+
+ <%= render :partial => "/posts/form"%>

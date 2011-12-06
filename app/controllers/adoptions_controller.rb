@@ -5,14 +5,28 @@ class AdoptionsController < ApplicationController
     @adoption = Adoption.new
   end
 
+  def show
+    @adoption = Adoption.find_by_id(params[:id])
+  end
+
+  def index
+    @adoptions = Adoption.all
+  end
+
   def create
     if current_user.nil?
       redirect_to root_path
     else
-      debugger
       @word = params[:id]
+      @tweet = Word.find_by_id(@word)
       @adoption = Adoption.new(:word_id => @word, :user_id => current_user.id)
-      current_user.twitter.update("I've just adopted a word from AdoptaWord")
+      @provider = Authentication.find_by_user_id(current_user.id)
+
+      if @provider[:provider] == "twitter"
+        current_user.twitter.update("I've just adopted " + @tweet[:word] + " from Adopt_A_Word")
+      else
+        current_user.facebook.feed!(:message => 'I just adopted ' + @tweet[:word] + " from Adopt_A_Word")
+      end
       if @adoption.save
         flash[:notice]= "Word Adopted"
         redirect_to usershow_path
@@ -23,38 +37,6 @@ class AdoptionsController < ApplicationController
     end
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #  def new

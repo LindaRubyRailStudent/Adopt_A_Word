@@ -2,6 +2,7 @@ class Word < ActiveRecord::Base
   belongs_to :adoption
   has_many :searches
   has_many :users, :through => :adoptions
+  has_many :posts, :through => :adoptions
 
   #scope :funny, where('search == ?', true)
   #scope :general, lambda{where('published_at <= ?', Time.zone.now)}

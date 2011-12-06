@@ -32,7 +32,7 @@ class AuthenticationsController < ApplicationController
       else
         ## if validation fails - no email - then redirect the new user to a new user page
         ## store the omniauth info in a session  but it might be too big for storing in a cookie session so allow extra
-        session[:omniauth]= omniauth.except('extra')
+        session[:omniauth]= omniauth
         redirect_to new_user_registration_path
       end
       #render :text => request.env["omniauth.auth"].to_yaml

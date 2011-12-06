@@ -1,0 +1,14 @@
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <%= f.label :email %> </br></br>
+    <%= f.email_field :email %> </br> </br>
+    <%= f.label :password %> </br>
+    <%= f.password_field :password %> </br>  </br>
+    <%= f.submit "Sign In" %> </br> </br>
+    <%= render :partial => "devise/shared/links" %>
+    <% if devise_mapping.rememberable? -%>
+        <%= f.label :remember_me %>
+        <%= f.check_box :remember_me %>
+    <% end -%>
+<% end %>
+ <%= render :partial => 'authentications/index', :locals => {:authentications => @authentications} %>

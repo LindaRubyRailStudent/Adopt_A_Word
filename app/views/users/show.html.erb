@@ -1,38 +1,79 @@
-
-<div ><p>Welcome Back <%= current_user.email %></p> </div>
-<div class= "user_container">
+<div><p>Welcome Back <%= current_user.email %></p></div>
+<div class="user_container">
 
   <div class="word_box">
-<% if @user.adoptions.length != 0 %>
-<p> <h2>You have adopted <%= @user.adoptions.length %> words</h2>
+    <% if @user.adoptions.length != 0 %>
+        <p>
 
-    <% @user.adoptions.each do |w| %>
-    <table class ="word_table"><tr><td class = 'gab'><%= Word.find_by_id(w[:word_id]).word.capitalize%></td></tr>
-     <tr> <td><%= Word.find_by_id(w[:word_id]).meaning %></td></tr>
-    </table>
-  <% end %>
+        <h2>You have adopted <%= @user.adoptions.length %> words</h2>
 
-  <% end %>
+        <% @user.adoptions.each do |w| %>
+            <table class="word_table">
+              <tr>
+                <td class='gab'><%= Word.find_by_id(w[:word_id]).word.capitalize %></td>
+              </tr>
+              <tr>
+                <td><%= Word.find_by_id(w[:word_id]).meaning %></td>
+              </tr>
+            </table>
+        <% end %>
+        <button class="button">Make a Comment</button>
+        <div id="post_form" style="display: none">
+          <%= form_for Post.new(:user => @user, :poster => current_user.id) do |f| %>
+              <%= f.hidden_field :user_id %>
+              <p>
+                <%= f.label :title %> </br>
+                <%= f.text_field :title %>
+              </p>
 
- <%= render :partial => "/posts/form"%>
-</div>
-<div class = "tweets">
-  <%= @search %>
-  <% if @another_tweet != nil? %>
-      Your adopted words tweets
-<% @another_tweet.each do |w| %>
-          <table class="word_table"><tr><td><%= image_tag('twitter-logo.jpg', :size => "64x64", :alt => "Twitter Logo")%></td><td class="gab"><%= w.text %></td></tr>
-            <tr><td><%= w.screen_name %></td><td> <%= w.created_at %></td></tr>
-          </table>
+              <p style="display:none">
+                <%= f.label :poster %> </br>
+                <%= f.text_field :poster%>
+              </p>
+
+              <p>
+                <%= f.label :content, "Comment" %> <br/>
+                <%= f.text_area :content, :rows => 8 %>
+              </p>
+              <p><%= f.submit ("Add Review") %> </p>
+
+          <% end %>
+        </div>
     <% end %>
-         <p class="adopt_button"><%= link_to "Adopt Another Word", words_path%></p>
 
-      <% else %>
-      When you tweet your adopted word in twitter we will show it here!
-  <p class="adopt_button"><%= link_to "Adopt A Word", words_path%> </p>
-      <% end %>
-</div>
 
+  </div>
+  <div class="tweets">
+    <% if @another_tweet.nil? %>
+        <% @facebook_post.each do |m| %>
+            <table class="word_table">
+              <tr><td><%= image_tag('facebook.png', :size => "64x64", :alt => "Twitter Logo") %></td><td class="gab"></td><td class="gab"><%= m.message %></td></tr>
+              <tr><td><%= image_tag('facebook.png', :size => "64x64", :alt => "Twitter Logo") %></td><td class="gab"></td><td class="gab"> <%= @message %> </td></tr>
+              <% @message2.each do |m| %>
+              <tr><td><%= image_tag('facebook.png', :size => "64x64", :alt => "Twitter Logo") %></td><td class="gab"></td><td class="gab"> <%= m[:message] %></td></tr>
+                <% end %>
+            </table>
+         <% end %>
+         <p class="adopt_button"><%= link_to "Adopt Another Word", words_path %></p>
+    <% else %>
+        Your adopted words tweets
+        <% @another_tweet.each do |w| %>
+            <table class="word_table">
+              <tr>
+                <td><%= image_tag('twitter-logo.jpg', :size => "64x64", :alt => "Twitter Logo") %></td>
+                <td class="gab"><%= w.text %></td>
+              </tr>
+              <tr>
+                <td><%= w.screen_name %></td>
+                <td> <%= w.created_at %></td>
+              </tr>
+            </table>
+        <% end %>
+        </br>
+        <p class="adopt_button"><%= link_to "Adopt Another Word", words_path %></p>
+<% end %>
+
+  </div>
 </div>
 
 

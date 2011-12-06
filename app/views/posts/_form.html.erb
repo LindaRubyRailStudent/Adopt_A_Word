@@ -1,4 +1,5 @@
-<%= form_tag('/posts', :method => :post) %>
+<div id="post_form" style="display: none">
+<%= form_tag('/posts', :method => :post , :id => 'new_post')%>
 
   <div class="field">
     <%= label_tag :title %><br />
@@ -13,3 +14,18 @@
   <div class="actions">
     <%= submit_tag %>
   </div>
+</div>
+
+<%= form_for Post.new(:adoption => @adoption, :id => "new_post") do |f| %>
+    <%= f.hidden_field :adoption_id %>
+    <p>
+      <%= f.label :title %> </br>
+      <%= f.text_field :title %>
+    </p>
+
+    <p>
+      <%= f.label :content, "Comment" %> <br/>
+      <%= f.text_area :content, :rows => 8 %>
+    </p>
+    <p><%= f.submit ("Add Review") %> </p>
+<% end %>

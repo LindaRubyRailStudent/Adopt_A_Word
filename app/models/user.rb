@@ -2,10 +2,12 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   require 'twitter'
+  require 'fb_graph'
 
   has_many :authentications
   has_many :adoptions
   has_many :words, :through => :adoptions
+  has_many :posts
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -26,6 +28,15 @@ class User < ActiveRecord::Base
 
   def facebook
     @fb_user ||= FbGraph::User.me(self.authentications.find_by_provider('facebook').token)
+    @fb_user.fetch
+  end
+
+  def facebook_search
+    @fb_user ||= FbGraph::User.me(self.authentications.find_by_provider('facebook').token)
+  end
+
+  def facebook_searchable
+    @fb_user ||=FbGraph::Searchable.search(params)
   end
 
    ## overriding the password validations

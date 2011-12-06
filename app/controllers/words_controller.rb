@@ -6,7 +6,6 @@ class WordsController < ApplicationController
   #end
 
  def index
-   debugger
   @words = Word.search(params[:search], params[:search2], params[:search3]).paginate(:per_page => 15,:page => params[:page])
    # @search = Word.search(params[:search])
    # @words = @search.paginate(:page => params[:page])
@@ -14,6 +13,8 @@ class WordsController < ApplicationController
 
   def show
     @word = Word.find(params[:id])
+    debugger
+    @tweet_search =  current_user.twitter.search(@word.word, :result_type => "recent")
   end
 
   def adopt_word
@@ -34,9 +35,11 @@ class WordsController < ApplicationController
         format.json { render json: @search.errors, status: :unprocessable_entity }
       end
     end
-
   end
 end
+
+
+
 
 
 

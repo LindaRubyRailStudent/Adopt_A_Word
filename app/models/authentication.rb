@@ -6,5 +6,4 @@ class Authentication < ActiveRecord::Base
     provider.titleize
   end
 
-
 end

@@ -11,7 +11,6 @@ gem 'fastercsv'
 gem 'csv-mapper'
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
-#gem "omniauth", ">= 0.3.0.rc1", :git => "git://github.com/intridea/omniauth.git", :branch => "0-3-stable"
 gem "omniauth", '< 1.0.0'
 gem 'twitter'
 gem 'ruby-debug19'

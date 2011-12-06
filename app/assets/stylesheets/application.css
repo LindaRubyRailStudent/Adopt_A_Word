@@ -27,6 +27,10 @@ src: url('../fonts/angelina.ttf')format('truetype');
     height: 22px;
 }
 
+.pagination a{
+    padding: 5px;
+}
+
 .disable{
     display: none;
 }
@@ -85,7 +89,7 @@ a {
 }
 #left{
     width: 30%;
-    background-color: #33ccff;
+    background-color: #d1e0e6;
     border-color:#cc0033;
     float: left;
     padding: 10px;
@@ -99,7 +103,7 @@ a {
 }
 #middle{
     width: 30%;
-     background-color: #ff0033;
+     background-color: #dac3c8;
      float: left;
      padding: 10px;
      height: 50px;
@@ -115,7 +119,7 @@ a {
 }
 #right{
     width:30%;
-    background-color: #003333;
+    background-color: #c6d9d9;
     border-color:#cc0033;
     float: left;
     padding: 10px;
@@ -157,8 +161,12 @@ a {
     font-size: 40px;
     font-style: italic;
     line-height: 60px;
+    text-align: left;
 }
 
+.word_table td{
+    text-align: left;
+}
 
 #user_word{
     color :#333333;
@@ -208,22 +216,43 @@ h2 {
     color: #ff0066;
     font-family: bebas;
     display :inline-block;
-    width: 100%;
-
+    width: 94%;
+    height: 8%;
+    position: relative;
+    top: -20px;
 }
+
+.user_new {
+    text-align: left;
+}
+
+.user_new a{
+    color: black;
+}
+
+.shared  {
+    color: black;
+}
+
+.shared a:hover {
+    color: white;
+}
+
+#post_form {
+    text-align:left;
+}
+
+.button{
+    position:relative;
+    left:-100px;
+}
+
 
 #user_nav a{
     color: #ff0066;
     font-size: 40px;
-    padding: 10px;
-}
-
-#auth {
-    font-size:10px;
-    position: relative;
-    left: 500px;
-    top: -50px;
-    font-family:arial;
+    padding: 20px;
+    float:left;
 }
 
 #auth a{
@@ -232,9 +261,10 @@ h2 {
 }
 
 #auth2 {
-    position:relative;
-    left: 1050px;
-    top: -120px;
+    position: relative;
+    float:left;
+    padding-left:450px;
+    top: -10px;
 }
 
 #auth2 a {
@@ -276,6 +306,14 @@ h2 {
 #words td{
     padding: 8px;
     font-size:12px;
+}
+
+#words a{
+    color: #333333;
+}
+
+#words a:hover {
+    color: white;
 }
 
 .word_table {

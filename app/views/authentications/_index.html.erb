@@ -4,7 +4,7 @@
     <div class="authentications">
       <% for authentication in @authentications %>
         <div class="authentication">
-          <%= image_tag  "#{authentication.provider}.png", :size => "32x32" %>
+          <%= image_tag  "#{authentication.provider}.png", :size => "64x64" %>
           <div class="provider"><%= authentication.provider.titleize %></div>
           <div class="uid"><%= authentication.uid %></div>
           <%= link_to "X", authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove" %>
@@ -17,15 +17,12 @@
 <% else %>
     <table>
       <tr><td><a href="/auth/twitter" class="auth_provider">
-  <%= image_tag "twitter.png", :size => "32x32", :alt => "Twitter" %>
+  <%= image_tag "twitter.png", :size => "64x64", :alt => "Twitter" %>
 </a><a href="/auth/facebook" class="auth_provider">
-  <%= image_tag "facebook.png", :size => "32x32", :alt => "Facebook" %>
+  <%= image_tag "facebook.png", :size => "64x64", :alt => "Facebook" %>
 </a></td>
         <td></td></tr>
       <tr><td>Sign in with Twitter or Facebook</td></tr>
     </table>
 <% end %>
-
-
-
 <div class="clear"></div>

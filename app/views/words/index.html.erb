@@ -1,6 +1,4 @@
 <!--<%= render :partial => "/searches/form"%>-->
-
-
 <div id="words_container">
 <div id="checkbox">
 
@@ -23,29 +21,8 @@
 
 </div>
 <div id="words">
-<table >
-  <tr>
-    <th>WORD</th>
-    <th>TYPE</th>
-    <th>MEANING</th>
-  </tr>
-<% @words.each do |wordy| %>
-  <tr class="<%= cycle('oddrow','evenrow') %>">
-    <td ><b><%= wordy.word.capitalize %></b></td>
-    <td><%= wordy.word_type %></td>
-    <td><%= wordy.meaning %></td>
-    <td><%= link_to 'Adopt Word', adoptions_path(:id => wordy), :method => :post %></td>
-    <td> <% if user_signed_in? %>
-         <%= link_to 'View This Word', wordy%>
-     <% else %>
-         <%= link_to "Show",new_user_session_path%>.
-     <% end %></td>
-  </tr>
-<% end %>
-
-</table>
-  <%= will_paginate @words, previous_label: h("<"), next_label: h(">") %>
-  </div>
+<%= render 'words' %>
+</div>
 <br />
 </div>
 
