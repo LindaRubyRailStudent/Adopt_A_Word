@@ -19,8 +19,11 @@ class UsersController < ApplicationController
       if n.provider == "twitter"
     @another_tweet = @user.twitter.user_timeline(n.screenname)
       else
-        @word = Word.find_by_id()
-        @facebook_post = @user.facebook.fetch.home(:q => "alabandical")
+        @adoptions = @user.adoptions
+        @adoptions.each do |w|
+         @word =  Word.find_by_id(w[:word_id]).word
+        end
+        @facebook_post = @user.facebook.fetch.home(:q => 'Bajulate')
         @facebook_post.collection.each do |m|
           @message = m[:message]
           @message2 = m[:comments][:data]

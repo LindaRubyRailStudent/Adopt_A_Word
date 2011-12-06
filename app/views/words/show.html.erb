@@ -4,25 +4,41 @@
       <tr>
         <td class='gab'><%= @word.word.capitalize %></td>
         <td id="word_type">(<%= @word.word_type %>)</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td id="word_meaning">--<%= @word.meaning.capitalize %>--</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td id="word_usage">"<%= @word.usage %>"</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td class="adopt_button"><%= link_to 'Adopt This Word', adoptions_path(:id => @word), :method => :post %></td>
-      </tr>
-    </table>
+        </tr>
+      </table>
+    </br></br>
+        <p id="word_meaning">--<%= @word.meaning.capitalize %>--</p>
+
+        <p id="word_usage">"<%= @word.usage %>"</p>
+
+         </br></br>
+        <p class="adopt_button"><%= link_to 'Adopt This Word', adoptions_path(:id => @word), :method => :post %></p>
+
+
   </div>
 
-     <% @tweet_search.each do |t|  %>
-      <%= t.user[:name] %> </br>
-       <%= t.user[:screen_name] %> </br>
-      <%= t[:text] %> </br>
-    <% end %>
+  <p class="gab2"><% if  @tweet_search.nil? || @tweet_search.empty? %>
+        There are no records of <%= @word.word %> on Twitter.
+        Why don't you adopt
+        <%= link_to adoptions_path(:id => @word),:method => :post do %>
+            <%= @word.word %>
+            <%end %>
+            and your tweet about your adopted word will be displayed here.
+
+</p>
+        <% else %>
+             <% @tweet_search.each do |t|  %>
+            <table class="word_table">
+              <tr>
+                <td><%= image_tag('twitter-logo.jpg', :size => "64x64", :alt => "Twitter Logo") %></td>
+                <td class="gab"><%= t[:text] %></td>
+              </tr>
+              <tr>
+                <td><%= t.user[:screen_name] %></td>
+                <td > <%= t.user[:name] %></td>
+              </tr>
+            </table>
+           <% end %>
+      <% end %>
+
 </div>

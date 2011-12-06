@@ -14,7 +14,11 @@ class WordsController < ApplicationController
   def show
     @word = Word.find(params[:id])
     debugger
-    @tweet_search =  current_user.twitter.search(@word.word, :result_type => "recent")
+    if current_user.authentications[2]=="twitter"
+    @tweet_search =  current_user.twitter.search(@word.word)
+    else
+      @tweet_search
+      end
   end
 
   def adopt_word

@@ -13,7 +13,7 @@ gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
 gem "omniauth", '< 1.0.0'
 gem 'twitter'
-gem 'ruby-debug19'
+#gem 'ruby-debug19'
 gem 'fb_graph'
 
 

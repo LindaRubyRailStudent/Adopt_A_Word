@@ -164,6 +164,18 @@ a {
     text-align: left;
 }
 
+.gab2 {
+    color: #333333;
+    font-family:angelina;
+    font-size: 40px;
+    font-style: italic;
+    line-height: 60px;
+    text-align: left;
+    position: relative;
+    left: 50px;
+    padding:50px;
+}
+
 .word_table td{
     text-align: left;
 }
