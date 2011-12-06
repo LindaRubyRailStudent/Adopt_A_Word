@@ -23,7 +23,7 @@ class UsersController < ApplicationController
         @adoptions.each do |w|
          @word =  Word.find_by_id(w[:word_id]).word
         end
-        @facebook_post = @user.facebook.fetch.home(:q => 'Bajulate')
+        @facebook_post = @user.facebook.fetch.home(:q => 'alabandical')
         @facebook_post.collection.each do |m|
           @message = m[:message]
           @message2 = m[:comments][:data]

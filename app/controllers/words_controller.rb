@@ -13,7 +13,6 @@ class WordsController < ApplicationController
 
   def show
     @word = Word.find(params[:id])
-    debugger
     if current_user.authentications[2]=="twitter"
     @tweet_search =  current_user.twitter.search(@word.word)
     else
