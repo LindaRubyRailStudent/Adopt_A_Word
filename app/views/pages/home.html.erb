@@ -19,7 +19,11 @@
 </div>
 </div>
 
-<div id='left'></div>
+<div id='left'>
+
+  <%= render :partial => 'authentications/index', :locals => {:authentications => @authentications}%> </br>
+   User your Twitter or Facebook account to register and logon to Adopt-A-Word.
+</div>
 <div id='middle'></div>
 <div id='right'></div>
 

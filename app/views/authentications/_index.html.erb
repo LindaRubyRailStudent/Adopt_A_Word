@@ -15,14 +15,11 @@
   <% end %>
   <p>Add another service to sign in with:</p>
 <% else %>
-    <table>
-      <tr><td><a href="/auth/twitter" class="auth_provider">
-  <%= image_tag "twitter.png", :size => "64x64", :alt => "Twitter" %>
-</a><a href="/auth/facebook" class="auth_provider">
+<a href="/auth/twitter" class="auth_provider" onclick="return confirm('You will be redirected to sign in with Twitter')">
+  <%= image_tag "twitter.png", :size => "64x64", :alt => "Twitter"  %>
+</a><a href="/auth/facebook" class="auth_provider"  onclick="return confirm('You will be redirected to sign in with Facebook')">
   <%= image_tag "facebook.png", :size => "64x64", :alt => "Facebook" %>
-</a></td>
-        <td></td></tr>
-      <tr><td>Sign in with Twitter or Facebook</td></tr>
-    </table>
+</a>
+<br/>
+Sign in with Twitter or Facebook
 <% end %>
-<div class="clear"></div>

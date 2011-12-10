@@ -1,12 +1,16 @@
 class Word < ActiveRecord::Base
+  ## Words belong to an adoption
+  ## Users may have many adoptions
+  ## Words may have many posts through adoptions
+
   belongs_to :adoption
   has_many :searches
   has_many :users, :through => :adoptions
   has_many :posts, :through => :adoptions
 
-  #scope :funny, where('search == ?', true)
-  #scope :general, lambda{where('published_at <= ?', Time.zone.now)}
-  #scope :chain , funny.general.order('publised_at desc')
+
+  ## search method with 3 paramaters passed to it
+  ## the find method uses a get method and an sql query
 
 def self.search(search, search2, search3)
   if search

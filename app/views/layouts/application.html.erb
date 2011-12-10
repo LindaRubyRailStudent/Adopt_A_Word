@@ -15,7 +15,7 @@
     <% if user_signed_in? %>
         <%= link_to "MY PROFILE", usershow_path %>
         Signed in as <%= current_user.email %>. Not you?
-        <%= link_to "SIGN OUT", destroy_user_session_path, :method => :delete %>
+        <%= link_to "SIGN OUT", destroy_user_session_path, :method => :delete, :confirm => 'Are you sure?' %>
     <% else %>
         <div id="auth2">
           <%= render :partial => 'authentications/index', :locals => {:authentications => @authentications} %>

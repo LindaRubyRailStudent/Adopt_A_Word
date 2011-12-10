@@ -158,7 +158,7 @@ a {
     color: #333333;
     float: left;
     font-family:angelina;
-    font-size: 40px;
+    font-size: 30px;
     font-style: italic;
     line-height: 60px;
     text-align: left;
@@ -234,13 +234,7 @@ h2 {
     top: -20px;
 }
 
-.user_new {
-    text-align: left;
-}
 
-.user_new a{
-    color: black;
-}
 
 .shared  {
     color: black;
@@ -266,6 +260,10 @@ h2 {
     padding: 20px;
     float:left;
 }
+
+#user_nav a.active {background: #787d94; color:#ffffff;}
+
+
 
 #auth a{
     font-size:10px;
@@ -347,7 +345,7 @@ h2 {
 
 .tweets {
     float:left;
-    width: 45%;
+    width: 67%;
     padding: 2%;
     height:100%;
 
@@ -485,6 +483,19 @@ footer nav {
 }
 #search2_category{
     width:155px;
+}
+
+.search td {
+    text-align:right;
+}
+
+#registration_new {
+    position: relative;
+    text-align: center;
+}
+
+#registration_new h2 {
+    text-align: center;
 }
 
 

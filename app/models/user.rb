@@ -4,6 +4,11 @@ class User < ActiveRecord::Base
   require 'twitter'
   require 'fb_graph'
 
+  ## the user has many authentications
+  ## the user can have many adoptions
+  ## the user has many words through adoptions
+  ## the user has many posts
+
   has_many :authentications
   has_many :adoptions
   has_many :words, :through => :adoptions
@@ -12,10 +17,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
+  ## Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-   ## method to allow user have omniauth hash passed to it.
+   ## method to allow user have omniauth hash passed to it
+   ## authentication is created from the omniauth hash
+   ## the fields of the authentication are mapped from the hash_from_omniauth method
    def apply_omniauth(omniauth)
      case omniauth['provider']
        when 'facebook'
@@ -26,6 +33,21 @@ class User < ActiveRecord::Base
     authentications.build(hash_from_omniauth(omniauth))
    end
 
+  ## find_tweets method
+  ## Save the users tweets to the database
+  def find_tweets(current_user)
+    @screen_name = current_user.authentications[2].to_s
+    @another_tweet = self.twitter.user_timeline(@screen_name)
+    @tweet = Tweets.new
+    @another_tweet.each do |t|
+      @tweet.screenname = t.screen_name
+      @tweet.text = t.text
+      @tweet.created_at = t.created_at
+    end
+     @tweet.save
+  end
+
+  ## contact Facebook to acccess the FbGraph
   def facebook
     @fb_user ||= FbGraph::User.me(self.authentications.find_by_provider('facebook').token)
     @fb_user.fetch
@@ -46,6 +68,8 @@ class User < ActiveRecord::Base
    (authentications.empty? || !password.blank?) && super
   end
 
+  ## contact Twitter to instantiate a new Twitter Client
+  ## pass the provider token and the provider secret
   def twitter
     unless @twitter_user
       provider = self.authentications.find_by_provider('twitter')
@@ -60,54 +84,35 @@ class User < ActiveRecord::Base
       @twitter_user = Twitter::Search.new
     end
     @twitter_user
+    end
+
+  def tweet_search
+
   end
-
-
-#class TwitterToken < ConsumerToken
-#  TWITTER_SETTINGS={:site=>"http://api.twitter.com", :request_endpoint => 'http://api.twitter.com',}
-#  def self.consumer
-#    @consumer||=OAuth::Consumer.new credentials[:key],credentials[:secret],TWITTER_SETTINGS
-#  end
-#
-#  def client
-#    Twitter.configure do |config|
-#      config.consumer_key = TwitterToken.consumer.key
-#      config.consumer_secret = TwitterToken.consumer.secret
-#      config.oauth_token = token
-#      config.oauth_token_secret = secret
-#    end
-#    @client ||= Twitter::Client.new
-#  end
-#end
-
-
-   #Twitter.configure do |config|
-#    config.consumer_key = 'oK9Qv5IPAe1qiR9bkKxZbw'
-#    config.consumer_secret = 'RNxEtuFbTG9wwXClGDMSw42qMnKeAZUEvoRfYMqw'
-#    config.oauth_token = '404315507-iOFLGPnKjRMwMRRIwODfHAc87WTFIo7HLY9EVZb'
-#    config.oauth_token_secret = '4Vkly1RITFYEkzumQfu5Ml4u5D9U113SHOnaMcYBuqU'
-#  end
 
   protected
 
+  ## method to build an authentication from facebook
   def apply_facebook(omniauth)
   if (extra = omniauth['extra']['user_hash'] rescue false)
     self.email = (extra['email'] rescue '')
   end
 end
 
+  ## method to build an authentication from twitter
   def apply_twitter(omniauth)
     if (extra = omniauth['extra']['user_hash'] rescue false)
     end
   end
 
+  ## method to map the details from the omniauth hash to the attributes of the authentication
     def hash_from_omniauth(omniauth)
       {
           :provider => omniauth['provider'],
           :uid => omniauth['uid'],
           :token => (omniauth['credentials']['token'] rescue nil),
           :secret => (omniauth['credentials']['secret'] rescue nil),
-        #  :screenname => (omniauth['user_info']['nickname'] rescue nil)
+          :screenname => (omniauth['user_info']['nickname'] rescue nil)
       }
     end
 

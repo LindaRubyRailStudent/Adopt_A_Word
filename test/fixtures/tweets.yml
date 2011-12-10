@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 
+  text: MyString
+  createdat: MyString
+  name: MyString
+  screenname: MyString
+
+two:
+  user_id: 
+  text: MyString
+  createdat: MyString
+  name: MyString
+  screenname: MyString

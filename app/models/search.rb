@@ -1,4 +1,5 @@
 class Search < ActiveRecord::Base
+
   belongs_to :word
 
   def words(parameters)

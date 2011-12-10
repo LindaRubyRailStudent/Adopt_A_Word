@@ -56,7 +56,9 @@
          <% end %>
          <p class="adopt_button"><%= link_to "Adopt Another Word", words_path %></p>
     <% else %>
-        Your adopted words tweets
+
+        <h1> Your most recent Tweets with your adopted words </h1></br>
+         <%= will_paginate @another_tweet, :param_name => :another_tweet %>
         <% @another_tweet.each do |w| %>
             <table class="word_table">
               <tr>

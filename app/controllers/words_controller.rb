@@ -1,16 +1,13 @@
 class WordsController < ApplicationController
-  #def index
-   # @words = Word.order('word').page(params[:page]).per_page(10)
-   # @words = Word.search(params[:search]).order('word').paginate(:per_page => 10, :page => params[:page])
-    #@words = Word.title_like_all(params[:search].to_s.split).order('word').paginate(:per_page => 10, :page =>params[:page])
-  #end
-
- def index
+  ## index action finds words by searching either the word, category or the type of word.
+  ## using the paginate method only 15 words are displayed per page
+   def index
   @words = Word.search(params[:search], params[:search2], params[:search3]).paginate(:per_page => 15,:page => params[:page])
-   # @search = Word.search(params[:search])
-   # @words = @search.paginate(:page => params[:page])
   end
 
+   ## show action will search for a word with a particular parameter
+   ## if the current user is has a twitter authentication it will find tweets with that particular word
+   ## if the current user has a facebook authentication it will find public facebook updates with that particular word
   def show
     @word = Word.find(params[:id])
     if current_user.authentications[2]=="twitter"
@@ -20,12 +17,15 @@ class WordsController < ApplicationController
       end
   end
 
+  ## method to adopt a word
   def adopt_word
     @word = Word.find(params[:id])
     @adoption = Adoption.new
     @adoption.adopt_a_word(word)
   end
 
+   ## method to search word
+   ## method is passed 3 parameters
   def search
     @search = Search.new(params[:search], params[:search2],params[:search3])
 

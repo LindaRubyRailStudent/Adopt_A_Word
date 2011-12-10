@@ -11,11 +11,19 @@
 jQuery.ajaxSetup({
   'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
 })
-
-  $("#new_post").submitWithAjax();
+   // submit a post with Ajax from a form
+$("#new_post").submitWithAjax();
 
 
 $(document).ready(function() {
+
+ var url = window.location.pathname,
+    urlRegExp = new RegExp(url.replace(/\/$/,'') + "$");
+    $('#user_nav a').each(function(){
+        if(urlRegExp.test(this.href.replace(/\/$/,''))){
+            $(this).addClass('active');
+        }
+    });
 
     $("#go").click(function() {
         $("#block").animate({
